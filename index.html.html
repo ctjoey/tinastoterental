@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tina's Tote Rental | Serving the Treasure Coast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #E91E8C;
+            --dark-pink: #C21874;
+            --yellow: #FFD700;
+            --black: #1a1a1a;
+            --navy: #1e3a5f;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--navy);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            color: var(--primary-pink);
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 0 var(--navy);
+        }
+
+        .logo-text span {
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        .phone-number {
+            background: var(--primary-pink);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .phone-number:hover {
+            background: var(--dark-pink);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .price-tag {
+            background: var(--yellow);
+            color: var(--black);
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-pink);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            color: var(--primary-pink);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h3::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--yellow);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--light-gray);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-pink);
+        }
+
+        .step-number {
+            background: var(--primary-pink);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h4 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Who We Serve */
+        .who-we-serve {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .serve-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 3px solid var(--primary-pink);
+            transition: transform 0.3s;
+        }
+
+        .serve-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233, 30, 140, 0.3);
+        }
+
+        .serve-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .serve-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            background: var(--navy);
+            color: var(--white);
+            max-width: 100%;
+        }
+
+        .comparison h3 {
+            color: var(--yellow);
+        }
+
+        .comparison h3::after {
+            background: var(--primary-pink);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            color: var(--navy);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-pink);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-card .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 2rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        /* Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: var(--white);
+            border: 3px solid var(--primary-pink);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: scale(1.05);
+        }
+
+        .package-card.popular {
+            border-color: var(--yellow);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .popular-badge {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 0.5rem 2rem;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .package-card h4 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .package-card .package-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-pink);
+            margin: 1rem 0;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .package-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Features List */
+        .features-list {
+            background: var(--light-gray);
+        }
+
+        .features-list ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .features-list li {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card h4 {
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+
+        /* Booking Form */
+        .booking {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--primary-pink) 100%);
+            color: var(--white);
+            max-width: 100%;
+        }
+
+        .booking h3 {
+            color: var(--yellow);
+        }
+
+        .booking h3::after {
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            color: var(--navy);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .honeypot {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .footer-info {
+            margin: 2rem 0;
+        }
+
+        .footer-info p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-phone {
+            font-size: 2rem;
+            color: var(--yellow);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 80px;
+                padding: 3rem 5%;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .price-tag {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Tina's Tote Rental Logo">
+                <div class="logo-text">
+                    <h1>TINA'S</h1>
+                    <span>TOTE RENTAL</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#booking">Book Now</a></li>
+            </ul>
+            <a href="tel:772-555-1212" class="phone-number">📞 772-555-1212</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>We Drop Off. You Pack. We Pick Up.</h2>
+        <p class="subtitle">Moving Box & Tote Rental in the Treasure Coast</p>
+        <p class="hero-description">Heavy-duty moving totes delivered to your door across the Treasure Coast. No tape, no broken boxes, far less waste. Just pack, move, and we handle the rest. <em>Tote rental service — not a moving company.</em></p>
+        
+        <div class="price-tag">$99 · 20 Totes + Tote Dolly · 2 Weeks · Free Delivery</div>
+        
+        <div class="cta-buttons">
+            <a href="#booking" class="btn-primary">Reserve in 2 Minutes →</a>
+            <a href="#packages" class="btn-secondary">See All Packages</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-item">✓ Free Delivery & Pickup</div>
+            <div class="feature-item">✓ Stackable & Durable</div>
+            <div class="feature-item">✓ No Tape Needed</div>
+            <div class="feature-item">✓ Cleaned & Sanitized</div>
+            <div class="feature-item">✓ Family Owned</div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h3>How It Works</h3>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">We drop off the totes and pick them up — you handle the packing and moving.</p>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Reserve</h4>
+                <p>Pick your package, choose your drop-off date, and you're booked. Takes less than 2 minutes.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Pack & Move</h4>
+                <p>We drop off clean totes and a tote dolly at your door. Pack up, stack up, and move at your own pace for 2 full weeks.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>We Pick Them Up</h4>
+                <p>When you're done unpacking, schedule a pickup. We come collect the empty totes — no drop-off needed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section id="who-we-serve">
+        <h3>Who We Serve</h3>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">Local moves in the Treasure Coast made simple.</p>
+        
+        <div class="who-we-serve">
+            <div class="serve-card">
+                <div class="serve-icon">🏢</div>
+                <h4>Apartments</h4>
+                <p>Studio and 1-bedroom renters making a local move</p>
+            </div>
+            <div class="serve-card">
+                <div class="serve-icon">🏡</div>
+                <h4>Families</h4>
+                <p>Growing families relocating to a bigger home</p>
+            </div>
+            <div class="serve-card">
+                <div class="serve-icon">⏰</div>
+                <h4>Busy Households</h4>
+                <p>No time to hunt for boxes or deal with tape and cardboard</p>
+            </div>
+            <div class="serve-card">
+                <div class="serve-icon">🌿</div>
+                <h4>Eco-Conscious Movers</h4>
+                <p>Families who want a low-waste alternative to cardboard</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <h3>Same Price as Boxes. Way Easier.</h3>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">Here's how we compare to the store-bought apartment moving kit.</p>
+        
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>Tina's Tote Rentals</h4>
+                <div class="price">$99 — 1 Bedroom</div>
+                <ul>
+                    <li><span class="check">✓</span> 20 heavy-duty reusable totes</li>
+                    <li><span class="check">✓</span> Tote dolly included</li>
+                    <li><span class="check">✓</span> No tape needed — lids snap shut</li>
+                    <li><span class="check">✓</span> Stackable & uniform size</li>
+                    <li><span class="check">✓</span> Waterproof & crush-proof</li>
+                    <li><span class="check">✓</span> Dropped off & picked up for free</li>
+                    <li><span class="check">✓</span> Cleaned & sanitized after every use</li>
+                    <li><span class="check">✓</span> Reusable hundreds of times — less waste</li>
+                    <li><span class="check">✓</span> Faster packing & unpacking</li>
+                </ul>
+            </div>
+            <div class="comparison-card">
+                <h4>Store-Bought Box Kit</h4>
+                <div class="price">$99 — Apartment Kit</div>
+                <ul>
+                    <li><span class="cross">✗</span> 30 mismatched cardboard boxes</li>
+                    <li><span class="cross">✗</span> No tote dolly</li>
+                    <li><span class="cross">✗</span> Requires tape, tape, and more tape</li>
+                    <li><span class="cross">✗</span> Different sizes = unstackable mess</li>
+                    <li><span class="cross">✗</span> Wet box? Ruined stuff</li>
+                    <li><span class="cross">✗</span> You have to go pick them up</li>
+                    <li><span class="cross">✗</span> Straight to the landfill after</li>
+                    <li><span class="cross">✗</span> Assembling boxes takes forever</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+        <h3>Choose Your Pack Size</h3>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">Every package includes a tote dolly, free drop-off, and free pickup across the Treasure Coast. <em>Tote rental only — not a moving service.</em></p>
+        
+        <div class="packages-grid">
+            <div class="package-card">
+                <h4>1 Bedroom</h4>
+                <p style="color: #666;">Studio · 1 Bedroom</p>
+                <div class="package-price">$99</div>
+                <p>for 2 weeks</p>
+                <ul>
+                    <li><span class="check">✓</span> 20 clean, durable totes</li>
+                    <li><span class="check">✓</span> 1 tote dolly included</li>
+                    <li><span class="check">✓</span> Delivery and pickup</li>
+                    <li><span class="check">✓</span> Cleaned & sanitized after every use</li>
+                </ul>
+                <a href="#booking" class="btn-primary">Reserve — $99</a>
+            </div>
+            
+            <div class="package-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h4>2–3 Bedrooms</h4>
+                <p style="color: #666;">Most Homes</p>
+                <div class="package-price">$169</div>
+                <p>for 2 weeks</p>
+                <ul>
+                    <li><span class="check">✓</span> 40 clean, durable totes</li>
+                    <li><span class="check">✓</span> 2 tote dollies included</li>
+                    <li><span class="check">✓</span> Delivery and pickup</li>
+                    <li><span class="check">✓</span> Cleaned & sanitized after every use</li>
+                </ul>
+                <a href="#booking" class="btn-primary">Reserve — $169</a>
+            </div>
+            
+            <div class="package-card">
+                <h4>4+ Bedrooms</h4>
+                <p style="color: #666;">Large Homes</p>
+                <div class="package-price">$219</div>
+                <p>for 2 weeks</p>
+                <ul>
+                    <li><span class="check">✓</span> 60 clean, durable totes</li>
+                    <li><span class="check">✓</span> 3 tote dollies included</li>
+                    <li><span class="check">✓</span> Delivery and pickup</li>
+                    <li><span class="check">✓</span> Cleaned & sanitized after every use</li>
+                </ul>
+                <a href="#booking" class="btn-primary">Reserve — $219</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features List -->
+    <section class="features-list">
+        <h3>Built Tough. Made to Stack.</h3>
+        <ul>
+            <li><span style="font-size: 2rem;">🔒</span> Snap-tight lids — no tape needed</li>
+            <li><span style="font-size: 2rem;">📐</span> Recessed lid for easy stacking</li>
+            <li><span style="font-size: 2rem;">💪</span> Reinforced construction — holds up to 65 lbs</li>
+            <li><span style="font-size: 2rem;">💧</span> Waterproof — your stuff stays dry</li>
+            <li><span style="font-size: 2rem;">🧼</span> Cleaned and sanitized after every rental</li>
+            <li><span style="font-size: 2rem;">♻️</span> Reused hundreds of times — far less waste</li>
+        </ul>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h3>A Local Family Business On a Green Mission</h3>
+        <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem;">We're a Treasure Coast family who got tired of the cardboard waste every time we moved. So we built a better way — and now we're sharing it with our neighbors.</p>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem;">Every rental keeps hundreds of cardboard boxes out of landfills. Better for you, better for the planet.</p>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🌱</div>
+                <h4>Eco-Friendly</h4>
+                <p>Each tote replaces dozens of cardboard boxes over its lifetime</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🤝</div>
+                <h4>Community First</h4>
+                <p>Proudly serving Port St. Lucie, Fort Pierce, Stuart, Vero Beach, Sebastian & all of the Treasure Coast</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">💪</div>
+                <h4>Built to Last</h4>
+                <p>Industrial-strength totes that hold up to 65 lbs each</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🚚</div>
+                <h4>Drop-Off & Pickup</h4>
+                <p>We drop off & pick up totes — you do the packing & moving</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="booking" id="booking">
+        <h3>Book Your Totes</h3>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">Tell us a bit about your move — we'll follow up to confirm dates and send your invoice. No commitment yet.</p>
+        
+        <div class="form-container">
+            <form action="#" method="POST">
+                <div class="honeypot">
+                    <label>Don't fill this out if you're human:</label>
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <h4 style="color: var(--primary-pink); margin-bottom: 1.5rem;">Your Info</h4>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <h4 style="color: var(--primary-pink); margin: 2rem 0 1.5rem;">Rental Package</h4>
+                
+                <div class="form-group">
+                    <label for="package">Select your package *</label>
+                    <select id="package" name="package" required>
+                        <option value="">Choose a package...</option>
+                        <option value="1bedroom">1 Bedroom — 20 Totes + Tote Dolly — $99</option>
+                        <option value="2-3bedroom">2–3 Bedrooms — 40 Totes + 2 Tote Dollies — $169</option>
+                        <option value="4plus">4+ Bedrooms — 60 Totes + 3 Tote Dollies — $219</option>
+                        <option value="notsure">Not sure yet — we'll discuss</option>
+                    </select>
+                </div>
+
+                <h4 style="color: var(--primary-pink); margin: 2rem 0 1.5rem;">Estimated Move Dates</h4>
+                <p style="margin-bottom: 1.5rem; color: #666;">No worries if these aren't final — we can always adjust before delivery.</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="delivery">Estimated delivery date *</label>
+                        <input type="date" id="delivery" name="delivery" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup">Estimated pickup date *</label>
+                        <input type="date" id="pickup" name="pickup" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Request Booking</button>
+                
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">We'll follow up to confirm your dates and send your invoice. No payment due yet.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Tina's Tote Rental Logo">
+            </div>
+            <div class="footer-info">
+                <h3 style="color: var(--primary-pink); margin-bottom: 1rem;">Tina's Tote Rental</h3>
+                <p>Serving the Treasure Coast</p>
+                <a href="tel:772-555-1212" class="footer-phone">772-555-1212</a>
+                <p style="margin-top: 1rem;"><a href="mailto:info@tinastoterental.com" style="color: var(--yellow);">info@tinastoterental.com</a></p>
+                <p style="margin-top: 2rem; color: #999; font-size: 0.9rem;">© 2026 Tina's Tote Rental. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you soon to confirm your dates.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
