@@ -139,6 +139,7 @@
         }
 
         .price-tag {
+            position: relative;
             background: var(--yellow);
             color: var(--black);
             display: inline-block;
@@ -624,6 +625,22 @@
                 padding: 1rem 2rem;
             }
         }
+        .most-popular {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary-pink);
+    color: var(--white);
+    padding: 0.4rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transform: rotate(5deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    letter-spacing: 0.5px;
+}
     </style>
 </head>
 <body>
@@ -653,7 +670,9 @@
         <p class="subtitle">Tote Rental in the Treasure Coast</p>
         <p class="hero-description">Heavy-duty moving totes delivered to your door across the Treasure Coast. No tape, no broken boxes, far less waste. Just pack, move, and we handle the rest. <em>Tote rental service — not a moving company.</em></p>
         
-        <div class="price-tag">$99 · 20 Totes + Tote Dolly · 2 Weeks · Free Delivery</div>
+        <div class="price-tag">
+            <span class="most-popular">Most Popular</span>
+            $99 · 20 Totes + Tote Dolly · 2 Weeks · Free Delivery</div>
         
         <div class="cta-buttons">
             <a href="#booking" class="btn-primary">Reserve in 2 Minutes →</a>
